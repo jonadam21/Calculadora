@@ -19,41 +19,52 @@ public class Practica2 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         double res = 0;
-        String operacion;
-        boolean comprobar = false;
+        String operacion ;
+        boolean comprobar = true;
 
         do {
-
-            String numero1;
+            
+            
             do {
-                System.out.println("\n Introdueix el primer numero. ");
-                numero1 = sc.nextLine();
-            } while (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
-            double nume1 = Double.parseDouble(numero1);
-            double n1 = new Double(numero1);
-
-            do {
-                System.out.println("\n Operació? (Indica el signe)");
-                System.out.println("+ = sumar \n - = restar \n"
-                        + " x = multiplicar \n / = dividir \n * = elevar primer num al segon num."
-                        + "\n % = residu");
+                System.out.println("Calculadora " 
+                            + "\n------------");
+                System.out.print("Sumar (+)"
+                            + "\nRestar (-)"
+                            + "\nMultiplicació (x) "
+                            + "\nDivicio (/)"
+                            + "\nElevar primer num al segon num (*)"
+                            + "\nResidu (%)\n"
+                            + "\nSelecciona una operació(Indica el signe): ");
                 operacion = sc.nextLine();
                 if (operacion.equals("+") || operacion.equals("-") || operacion.equals("x")
-                        || operacion.equals("X") || operacion.equals("/") || operacion.equals("%")
-                        || operacion.equals("*")) {
+                        || operacion.equals("/") || operacion.equals("*")
+                        || operacion.equals("%")) {
                     comprobar = true;
                 } else {
                     comprobar = false;
                 }
             } while (comprobar != true);
+            
+            
 
+            String numero1;
+            do {
+                System.out.println("----------------------------");
+                System.out.print("Introdueix el primer número: ");
+                numero1 = sc.nextLine();
+            } while (!numero1.matches("[+-]?[\\d]*[.]?[\\d]+"));
+            double nume1 = Double.parseDouble(numero1);
+            double n1 = new Double(numero1);
+            
+            
             String numero2;
             do {
-                System.out.println("\n Introdueix el segon numero.");
+                System.out.print("\nIntrodueix el segon número: ");
                 numero2 = sc.nextLine();
             } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
             double nume2 = Double.parseDouble(numero2);
             double n2 = new Double(numero2);
+         
 
             do {
                 comprobar = true;
@@ -71,8 +82,8 @@ public class Practica2 {
                     case "/":
                         while (n2 == 0) {
                             do {
-                                System.err.println(" Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
+                                System.err.println("Al denominador hi ha un zero"
+                                        + "\nper a evitar errors coloca un altre valor.");
                                 numero2 = sc.nextLine();
                             } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
                             nume2 = Double.parseDouble(numero2);
@@ -86,8 +97,8 @@ public class Practica2 {
                     case "%":
                         while (n2 == 0) {
                             do {
-                                System.err.println(" Al denominador hi ha un zero \n"
-                                        + "per a  evitar errors coloca un altre valor.");
+                                System.err.println("Al denominador hi ha un zero"
+                                        + "\nper a evitar errors coloca un altre valor.");
                                 numero2 = sc.nextLine();
                             } while (!numero2.matches("[+-]?[\\d]*[.]?[\\d]+"));
                             nume2 = Double.parseDouble(numero2);
@@ -98,12 +109,14 @@ public class Practica2 {
                 }
             } while (comprobar != true);
 
-            System.out.println("(" + numero1 + ") " + operacion + " (" + numero2 + ")" + " = " + res);
-            System.out.println("\n Vols continuar operant? \n");
-            System.out.println(" [s/n]");
+            System.out.println("\nResultat: (" + numero1 + " " + operacion + " " + numero2 + ")" + " = " + res);
+            System.out.println("----------------------------");
+            System.out.println("\nVols continuar operant?");
+            System.out.println("\nIntrodueix: [s/n]");
             do {
                 comprobar = true;
                 operacion = sc.nextLine();
+                System.out.println("----------------------------");
 
                 switch (operacion) {
                     case "s":
@@ -112,10 +125,11 @@ public class Practica2 {
                     case "N":
                         break;
                     default:
-                        System.err.println("\n Error, posa un valor vàlid. \n");
+                        System.err.println("\nError, posa un valor vàlid. \n");
                         comprobar = false;
                 }
             } while (comprobar != true);
         } while (operacion.equals("s") || operacion.equals("S"));
+  
     }
 }
